@@ -33,5 +33,4 @@ func main() {
 		panic(err)
 	}
 	fmt.Println(ens.Address)
-
 }
