@@ -9,7 +9,8 @@ import (
 )
 
 type ENS struct {
-	Address string `json:"address"`
+	Address string  `json:"address"`
+	Balance float32 `json:"balance"`
 }
 
 func main() {
@@ -18,7 +19,7 @@ func main() {
 	if len > 1 {
 		name = os.Args[1]
 	}
-	res, err := http.Get("https://www.dakshk.xyz/api/ens?name=" + name)
+	res, err := http.Get("https://dakshk.xyz/api/ens?name=" + name)
 	if err != nil {
 		panic(err)
 	}
@@ -32,5 +33,6 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(ens.Address)
+	fmt.Printf("Address: %s\n", ens.Address)
+	fmt.Printf("Balance: %.4f ETH\n", ens.Balance)
 }
